@@ -14,10 +14,13 @@
   },
   "author": "zakariae.dianr@gmail.com",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "electron": "^17.0.0",
-    "electron-builder": "^22.14.5",
     "express": "^4.17.2",
     "nightmare": "^3.0.2"
+  },
+  "devDependencies": {
+    "electron": "^17.0.0",
+    "electron-packager": "^15.4.0"
   }
 }

@@ -8,7 +8,7 @@ var app = new Vue({
     promises: [],
   },
   async created() {
-    // await this.getAllListings();
+    await this.getAllListings();
   },
   methods: {
     async getAllListings() {
