@@ -1,0 +1,13 @@
+.progress {
+    margin: 25% 50px;
+}
+
+nav.navbar-fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+main {
+    margin-top: 76px;
+}

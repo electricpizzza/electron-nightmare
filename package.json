@@ -1,0 +1,23 @@
+{
+  "name": "okazar-updater",
+  "version": "1.0.0",
+  "description": "",
+  "main": "background.js",
+  "scripts": {
+    "start": "electron .",
+    "app:dir": "electron-builder --dir",
+    "app:dist": "electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "build": {
+    "appId": "com.okazar.updater"
+  },
+  "author": "zakariae.dianr@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^17.0.0",
+    "electron-builder": "^22.14.5",
+    "express": "^4.17.2",
+    "nightmare": "^3.0.2"
+  }
+}

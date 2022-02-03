@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <title>Okazar updater</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./assets/js/vue.js"></script>
+    <script src="./assets/js/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-info navbar-fixed-top">
+            <span class="navbar-brand" href="#">
+                <img src="./assets/img/logo-okazar-blanc.png" alt="" height="50">
+            </span>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation"></button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item active mx-3">
+                        <button :disabled="loading" class="nav-link btn btn-outline-light px-5"
+                            @click="updateListings">Update Listings <span class="sr-only">(current)</span></button>
+                    </li>
+                    <li class="nav-item dropdown mx-3">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Filter</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="#">Show all</a>
+                            <a class="dropdown-item" href="#">Sold Listings</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <main>
+            <div class="progress" v-if="loading">
+                <div class="progress-bar progress-bar-animated progress-bar-striped bg-info" role="progressbar"
+                    :style="{width:progress+'%'}" :aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <table class="table table-striped" v-else>
+                <thead>
+                    <tr>
+                        <th class="text-left">#</th>
+                        <th class="text-left">Title</th>
+                        <th>Status On Okazar</th>
+                        <th>Okazar Link</th>
+                        <th>Realtor Link</th>
+                        <th>Status on Realtor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="listing in listings" :key="listing.id">
+                        <td>{{ listing.id }}</td>
+                        <td>{{ listing.title }}</td>
+                        <td>
+                            {{ listing.status }}
+                        </td>
+                        <td>
+                            <a name="" id="" class="btn btn-primary" href="#" role="button"
+                                :href="listing.okazarLink">Okazar</a>
+                        </td>
+                        <td>
+                            <a name="" id="" class="btn btn-info" href="#" role="button"
+                                :href="listing.realtorLink">Realtor</a>
+
+                        </td>
+                        <td class="py-1">
+                            <img v-if="listing.realtorStatus" src="./assets/img/sold.png" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+</body>
+<script src="./assets/js/app.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+</html>
