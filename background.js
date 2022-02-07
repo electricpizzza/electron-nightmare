@@ -22,6 +22,11 @@ app.on("window-all-closed", function () {
   if (process.platform !== "darwin") app.quit();
 });
 
+app.webContents.on("new-window", function (e, url) {
+  e.preventDefault();
+  require("electron").shell.openExternal(url);
+});
+
 const startServer = () => {
   server.use(function (req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*");

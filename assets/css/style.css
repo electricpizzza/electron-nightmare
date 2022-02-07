@@ -1,5 +1,5 @@
 .progress {
-    margin: 25% 50px;
+    margin: 20% 50px;
 }
 
 nav.navbar-fixed-top {
@@ -10,4 +10,8 @@ nav.navbar-fixed-top {
 
 main {
     margin-top: 76px;
+}
+
+.alert {
+    top: 80px;
 }
