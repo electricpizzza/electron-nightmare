@@ -1,4 +1,6 @@
-## CD to folder
+## Okazar Updater
+
+CD to folder
 
 Install packages
 
