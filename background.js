@@ -12,17 +12,26 @@ function createWindow() {
 
   win.loadFile("index.html");
 }
+const NOTIFICATION_TITLE = "Basic Notification";
+const NOTIFICATION_BODY = "Notification from the Main process";
 
+function showNotification() {
+  new Notification({
+    title: NOTIFICATION_TITLE,
+    body: NOTIFICATION_BODY,
+  }).show();
+}
 app.whenReady().then(() => {
   startServer();
   createWindow();
+  showNotification();
 });
 
 app.on("window-all-closed", function () {
-  if (process.platform !== "darwin") app.quit();
+  app.quit();
 });
 
-app.webContents.on("new-window", function (e, url) {
+app.on("new-window", function (e, url) {
   e.preventDefault();
   require("electron").shell.openExternal(url);
 });

@@ -13,5 +13,8 @@ main {
 }
 
 .alert {
-    top: 80px;
+    bottom: 0;
+    position: absolute;
+    right: 12px;
+    z-index: 99;
 }

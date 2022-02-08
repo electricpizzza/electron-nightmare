@@ -38,27 +38,31 @@ var app = new Vue({
       this.process = "Updating data...";
       this.loading = true;
       this.progress = 100;
-      const toUpdate = this.listings
+      const soldouts = this.listings
         .filter((listing) => listing.realtorStatus)
         .map((listing) => {
           return { id: listing.id, sataus: listing.realtorStatus };
         });
-      if (toUpdate.length !== 0)
-        axios
-          .post("https://okazar.com/crondel/", {
-            listings: toUpdate,
-          })
-          .then((resp) => resp.data)
-          .then((data) => {
-            this.process = "Loading data...";
-            this.loading = false;
-            if (data.status === 200) this.getAllListings();
-          })
-          .catch((err) => {
-            this.loading = false;
-            this.error = true;
-          });
-      else alert("Everything is up to date. There is nothing to update!");
+      const checkeds = this.listings.map((listing) => {
+        return { id: listing.id, sataus: listing.realtorStatus };
+      });
+      axios
+        .post("https://okazar.com/crondel/", {
+          soldouts,
+          checkeds,
+        })
+        .then((resp) => resp.data)
+        .then((data) => {
+          this.process = "Loading data...";
+          this.loading = false;
+          if (data.status === 200) this.getAllListings();
+        })
+        .catch((err) => {
+          this.loading = false;
+          this.error = true;
+        });
+      if (soldouts.length === 0)
+        alert("Everything is up to date. There is nothing to update!");
       this.loading = false;
       this.progress = 100;
     },
