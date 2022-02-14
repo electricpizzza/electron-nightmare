@@ -18,3 +18,9 @@ main {
     right: 12px;
     z-index: 99;
 }
+
+.table-striped thead {
+    position: sticky;
+    top: 76;
+    background-color: #fff;
+}
